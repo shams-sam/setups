@@ -9,6 +9,9 @@ set-option -g repeat-time 0
 # Removes ESC delay
 set -sg escape-time 0
 
+# Remove Auto-rename
+set-option -g allow-rename off
+
 # List of plugins
 set -g @tpm_plugins '                     \
     caiogondim/maglev                     \
