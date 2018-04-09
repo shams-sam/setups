@@ -28,4 +28,4 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # 8888 for jupyter notebook
 EXPOSE 6006 8888
 
-CMD ["/bin/bash"]
+CMD ["/run_jupyter.sh", "--allow-root"]
