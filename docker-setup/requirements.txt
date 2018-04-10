@@ -1,3 +1,5 @@
+gensim
+opencv-python
 psycopg2-binary
 sqlalchemy
 tqdm

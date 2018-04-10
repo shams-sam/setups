@@ -8,12 +8,12 @@ WORKDIR /development
 ADD . /development
 
 # setup from commandline
-RUN apt-get update && apt-get install -y \
-    python-opencv \
-    && \
-apt-get clean && \
-apt-get autoremove && \
-rm -rf /var/lib/apt/list/*
+# RUN apt-get update && apt-get install -y \
+#     python-opencv \
+#     && \
+# apt-get clean && \
+# apt-get autoremove && \
+# rm -rf /var/lib/apt/list/*
 
 # install requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
