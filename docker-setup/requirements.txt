@@ -1,10 +1,11 @@
+beautifulsoup4
 gensim
 nltk
 opencv-python
 psycopg2-binary
 scikit-image
 sqlalchemy
-torch
-torchvision
+# torch
+# torchvision
 tqdm
 

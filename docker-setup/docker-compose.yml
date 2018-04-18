@@ -1,0 +1,14 @@
+# add image name
+# copy to the directory where jupyter is to be run
+# add a .env file optionally
+# COMPOSER_PROJECT_NAME=xxx will rename the project
+# default name otherwise will be the container directory.
+version: "3.4"
+services:
+  development:
+    image:
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/development
+
