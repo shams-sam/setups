@@ -1,14 +1,12 @@
 version: "3.4"
 services:
   devel:
-# image for cpu version
-#     image: ufoym/deepo:py36-jupyter-cpu
-# image for gpu version
-#     image: ufoym/deepo:py36-jupyter
+    build: cpu
+    image: shamssam/dev-py36:cpu
     ports:
       - "8888:8888"
       - "6006:6006"
     volumes:
-      - ./../:/devel
+      - /Users/shams/:/devel
     working_dir: /devel
     entrypoint: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser
