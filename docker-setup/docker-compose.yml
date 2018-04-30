@@ -1,14 +1,14 @@
-# add image name
-# copy to the directory where jupyter is to be run
-# add a .env file optionally
-# COMPOSER_PROJECT_NAME=xxx will rename the project
-# default name otherwise will be the container directory.
 version: "3.4"
 services:
-  development:
-    image:
+  devel:
+# image for cpu version
+#     image: ufoym/deepo:py36-jupyter-cpu
+# image for gpu version
+#     image: ufoym/deepo:py36-jupyter
     ports:
       - "8888:8888"
+      - "6006:6006"
     volumes:
-      - .:/development
-
+      - ./../:/devel
+    working_dir: /devel
+    entrypoint: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser
