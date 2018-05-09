@@ -1,24 +1,20 @@
 # parent image
-FROM tensorflow/tensorflow:nightly-gpu-py3
+FROM ufoym/deepo:py36-jupyter
 
 # set working directory
-WORKDIR /development
+WORKDIR /setup
 
 # Copy the current directory contents into the destination directory
-ADD . /development
-
-# setup from commandline
-RUN apt-get update && apt-get install -y \
-    python-opencv \
-    && \
-apt-get clean && \
-apt-get autoremove && \
-rm -rf /var/lib/apt/list/*
+ADD . /setup
 
 # install requirements.txt
 RUN pip install --upgrade pip && \
     pip install --trusted-host pypi.python.org -r \
     requirements.txt
 
-# nltk corpora downloads
-RUN python3 -m nltk.downloader -d /usr/share/nltk_data punkt
+# download nltk corpora
+RUN python3 -m nltk.downloader \
+    -d /usr/share/nltk_data \
+    punkt \
+    stopwords
+
