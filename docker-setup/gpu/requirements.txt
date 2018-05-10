@@ -1,6 +1,7 @@
 beautifulsoup4
 gensim
 nltk
+psycopg2
 sqlalchemy
 tqdm
 
