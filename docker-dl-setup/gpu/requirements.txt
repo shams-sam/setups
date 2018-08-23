@@ -4,4 +4,4 @@ nltk
 psycopg2
 sqlalchemy
 tqdm
-
+xlrd
