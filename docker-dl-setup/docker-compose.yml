@@ -1,12 +1,14 @@
 version: "3.4"
 services:
   devel:
-    build: cpu
-    image: shamssam/dev-py36:cpu
+    build: gpu
+    image: dev-py36
+    env_file:
+      - .env
     ports:
-      - "8888:8888"
+      - "8889:8888"
       - "6006:6006"
     volumes:
-      - /Users/shams/:/devel
-    working_dir: /devel
+      - /home/m1cro1ce/WorkSpace/:/WorkSpace
+    working_dir: /WorkSpace
     entrypoint: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser

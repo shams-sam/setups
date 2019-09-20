@@ -1,5 +1,5 @@
 # parent image
-FROM ufoym/deepo:py36-jupyter
+FROM ufoym/deepo:all-jupyter-py36-cu90
 
 # set working directory
 WORKDIR /setup
@@ -17,4 +17,3 @@ RUN python3 -m nltk.downloader \
     -d /usr/share/nltk_data \
     punkt \
     stopwords
-

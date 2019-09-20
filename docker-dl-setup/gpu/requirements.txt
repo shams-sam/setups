@@ -1,8 +1,11 @@
 beautifulsoup4
 gensim
 nltk
-psycopg2
+plotly
+psycopg2-binary
 PyMySql
+seaborn
 sqlalchemy
 tqdm
+xgboost
 xlrd
