@@ -1,5 +1,5 @@
 # parent image
-FROM ufoym/deepo:all-jupyter-py36-cu90
+FROM ufoym/deepo:latest
 
 # set working directory
 WORKDIR /setup

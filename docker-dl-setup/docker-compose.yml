@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8889:8888"
+      - "8888:8888"
       - "6006:6006"
     volumes:
       - /home/m1cro1ce/WorkSpace/:/WorkSpace
