@@ -17,3 +17,6 @@ RUN python3 -m nltk.downloader \
     -d /usr/share/nltk_data \
     punkt \
     stopwords
+
+WORKDIR /WorkSpace
+
