@@ -1,9 +1,27 @@
+# remap prefix from 'C-b' to 'C-`'
+unbind C-b
+set-option -g prefix C-]
+bind-key C-] send-prefix
+
+# Enable mouse mode (tmux 2.1 and above)
+# set -g mouse on
+
 # Start windows and panes at 1, not 0
 set -g base-index 0
 set -g pane-base-index 0
 
-set-option -g status-position top
+# loud or quiet?
+set -g visual-activity off
+set -g visual-bell off
+set -g visual-silence off
+setw -g monitor-activity off
+set -g bell-action none
 
+# statusbar
+set -g status-position top
+set -g status-justify left
+
+# Remove ESC delay
 set-option -g repeat-time 0
 
 # Removes ESC delay
@@ -11,6 +29,10 @@ set -sg escape-time 0
 
 # Remove Auto-rename
 set-option -g allow-rename off
+
+# Emacs-style
+set -g mode-keys emacs
+set -g status-keys emacs
 
 # List of plugins
 set -g @tpm_plugins '                     \
