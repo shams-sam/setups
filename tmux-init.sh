@@ -1,6 +1,6 @@
 tmux new -s "session-name-here" -d
 tmux split-window -v
 tmux split-window -h
-tmux split-window -h "watch -n1 nvidia-smi"
-tmux split-window -v "watch -n1 free -m"
+tmux split-window -h "watch -n15 nvidia-smi"
+tmux select-layout main-horizontal
 tmux a
