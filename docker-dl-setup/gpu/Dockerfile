@@ -18,5 +18,12 @@ RUN python3 -m nltk.downloader \
     punkt \
     stopwords
 
-WORKDIR /WorkSpace
+RUN apt-get update && \
+    apt-get install -y zsh
+	    
+RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+ADD ./.zshrc /root/.zshrc
+
+
+WORKDIR /WorkSpace
