@@ -28,6 +28,7 @@
     blacken                         ;; Black formatting on save
     magit                           ;; Git integration
     material-theme                  ;; Theme
+    ace-window                      ;; Window navigation
     )
   )
 
@@ -50,9 +51,11 @@
 ;; Development Setup
 ;; ====================================
 ;; Enable elpy
+;; https://emacs.stackexchange.com/questions/16637/how-to-set-up-elpy-to-use-python3
+;; https://emacs.stackexchange.com/questions/52652/elpy-doesnt-recognize-i-have-virtualenv-installed
 (elpy-enable)
-(setq elpy-rpc-python-command "python3")    ;; https://emacs.stackexchange.com/questions/16637/how-to-set-up-elpy-to-use-python3
-(setq elpy-rpc-virtualenv-path 'current)    ;; https://emacs.stackexchange.com/questions/52652/elpy-doesnt-recognize-i-have-virtualenv-installed
+(setq elpy-rpc-python-command "python3")
+(setq elpy-rpc-virtualenv-path 'current)
 (setq python-shell-interpreter "python3")
 
 ;; Enable Flycheck
@@ -67,16 +70,19 @@
 ;; Disable emacs backup files
 (setq make-backup-files nil)
 
-;; User-Defined init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (flycheck material-theme elpy better-defaults))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; show lines over 80 characters
+;; (require 'whitespace)
+;; (setq whitespace-style '(face empty tabs lines-tail trailing))
+;; (global-whitespace-mode t)
+
+;; ace-window
+(require 'ace-window)
+  :ensure t
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+      aw-char-position 'top-left
+      aw-ignore-current nil
+      aw-leading-char-style 'char
+      aw-scope 'frame)
+(global-set-key (kbd "M-o") 'ace-window)
+;;  :bind (("M-o" . ace-window)
+;;         ("M-O" . ace-swap-window)))
