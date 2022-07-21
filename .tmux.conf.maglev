@@ -18,7 +18,7 @@ setw -g monitor-activity off
 set -g bell-action none
 
 # statusbar
-set -g status-position top
+set -g status-position bottom
 set -g status-justify left
 
 # Remove ESC delay
