@@ -1,0 +1,6 @@
+lxc launch -s lxd ubuntu1804-cuda10-2-base m1cro1ce-v3
+lxc config device set m1cro1ce-v3 root size 600GB
+lxc config device show m1cro1ce-v3
+
+lxc config device add m1cro1ce-v3 port-6006 proxy listen=tcp:0.0.0.0:26006 connect=tcp:127.0.0.1:6006
+

@@ -1,0 +1,1 @@
+https://blog.simos.info/how-to-run-julia-on-jupyter-in-a-lxd-container/
