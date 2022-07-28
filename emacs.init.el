@@ -53,6 +53,7 @@
 ;; Enable elpy
 ;; https://emacs.stackexchange.com/questions/16637/how-to-set-up-elpy-to-use-python3
 ;; https://emacs.stackexchange.com/questions/52652/elpy-doesnt-recognize-i-have-virtualenv-installed
+;; in case of "peculiar error": try M-x elpy-config and install dependencies
 (elpy-enable)
 (setq elpy-rpc-python-command "python3")
 (setq elpy-rpc-virtualenv-path 'current)
@@ -65,10 +66,15 @@
 
 ;; Enable autopep8
 (require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(add-hook 'elpy-mode-hook 'py-autopep8-mode)
 
 ;; Disable emacs backup files
 (setq make-backup-files nil)
+
+;; Disable indentation warnings
+;; https://stackoverflow.com/questions/18778894/emacs-24-3-python-cant-guess-python-indent-offset-using-defaults-4
+(setq python-indent-guess-indent-offset t)
+(setq python-indent-guess-indent-offset-verbose nil)
 
 ;; show lines over 80 characters
 ;; (require 'whitespace)
@@ -86,3 +92,16 @@
 (global-set-key (kbd "M-o") 'ace-window)
 ;;  :bind (("M-o" . ace-window)
 ;;         ("M-O" . ace-swap-window)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(ace-window material-theme magit blacken py-autopep8 flycheck elpy better-defaults)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
