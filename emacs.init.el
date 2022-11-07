@@ -65,8 +65,14 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; Enable autopep8
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-mode)
+;; (require 'py-autopep8)
+;; (add-hook 'elpy-mode-hook 'py-autopep8-mode)
+
+;; add hook for black instead of autopep8
+;; reference: https://elpy.readthedocs.io/en/latest/customization_tips.html#auto-format-code-on-save
+(add-hook 'elpy-mode-hook (lambda ()
+                            (add-hook 'before-save-hook
+                                      'elpy-black-fix-code nil t)))
 
 ;; Disable emacs backup files
 (setq make-backup-files nil)
@@ -92,13 +98,15 @@
 (global-set-key (kbd "M-o") 'ace-window)
 ;;  :bind (("M-o" . ace-window)
 ;;         ("M-O" . ace-swap-window)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(elpy-formatter 'black)
  '(package-selected-packages
-   '(ace-window material-theme magit blacken py-autopep8 flycheck elpy better-defaults)))
+   '(logview dockerfile-mode yaml-mode yaml ace-window material-theme magit blacken py-autopep8 flycheck elpy better-defaults)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
