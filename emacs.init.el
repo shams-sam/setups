@@ -27,7 +27,8 @@
     py-autopep8                     ;; Run autopep8 on save
     blacken                         ;; Black formatting on save
     magit                           ;; Git integration
-    material-theme                  ;; Theme
+    material-theme                  ;; Theme: material, material-light
+    base16-theme
     ace-window                      ;; Window navigation
     )
   )
@@ -65,8 +66,8 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; Enable autopep8
-;; (require 'py-autopep8)
-;; (add-hook 'elpy-mode-hook 'py-autopep8-mode)
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-mode)
 
 ;; add hook for black instead of autopep8
 ;; reference: https://elpy.readthedocs.io/en/latest/customization_tips.html#auto-format-code-on-save
@@ -83,21 +84,22 @@
 (setq python-indent-guess-indent-offset-verbose nil)
 
 ;; show lines over 80 characters
-;; (require 'whitespace)
-;; (setq whitespace-style '(face empty tabs lines-tail trailing))
-;; (global-whitespace-mode t)
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
 
 ;; ace-window
 (require 'ace-window)
   :ensure t
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
       aw-char-position 'top-left
-      aw-ignore-current nil
+      aw-dispatch-always 't
+      ;; aw-ignore-current nil
       aw-leading-char-style 'char
       aw-scope 'frame)
 (global-set-key (kbd "M-o") 'ace-window)
-;;  :bind (("M-o" . ace-window)
-;;         ("M-O" . ace-swap-window)))
+ ;; :bind (("M-o" . ace-window)
+ ;;        ("M-O" . ace-swap-window)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
