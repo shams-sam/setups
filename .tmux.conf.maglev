@@ -1,4 +1,4 @@
-# remap prefix from 'C-b' to 'C-`'
+# remap prefix from 'C-b' to 'C-]'
 unbind C-b
 set-option -g prefix C-]
 bind-key C-] send-prefix
@@ -7,8 +7,8 @@ bind-key C-] send-prefix
 # set -g mouse on
 
 # Start windows and panes at 1, not 0
-set -g base-index 0
-set -g pane-base-index 0
+set -g base-index 1
+set -g pane-base-index 1
 
 # loud or quiet?
 set -g visual-activity off
@@ -34,6 +34,12 @@ set-option -g allow-rename off
 set -g mode-keys emacs
 set -g status-keys emacs
 
+# Reload config
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded!"
+
+# Scratchpad
+bind-key S display-popup -w 80% -h 80% -E "emacs -nw ~/scratchpad.org"
+
 # List of plugins
 set -g @tpm_plugins '                     \
     caiogondim/maglev                     \
@@ -44,7 +50,7 @@ set -g @tpm_plugins '                     \
     tmux-plugins/tmux-yank                \
     tmux-plugins/tmux-pain-control        \
     tmux-plugins/tmux-copycat             \
-    tmux-plugins/tmux-open                \
+    # tmux-plugins/tmux-open              \ # requires xdg-open; not useful on headless servers
     tmux-plugins/tmux-battery             \
     tmux-plugins/tmux-cpu                 \
     tmux-plugins/tmux-prefix-highlight    \

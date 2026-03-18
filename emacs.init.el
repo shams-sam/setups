@@ -30,8 +30,11 @@
     material-theme                  ;; Theme: material, material-light
     base16-theme
     ace-window                      ;; Window navigation
+    highlight-indent-guides         ;; Highlight indentations
     )
   )
+
+(require 'vlf-setup) ;; to open large files
 
 ;; Scans the list in myPackages
 ;; If the package listed is not already installed, install it
@@ -61,19 +64,20 @@
 (setq python-shell-interpreter "python3")
 
 ;; Enable Flycheck
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; Enable autopep8
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-mode)
+;; (require 'py-autopep8)
+;; (add-hook 'elpy-mode-hook 'py-autopep8-mode)
 
 ;; add hook for black instead of autopep8
 ;; reference: https://elpy.readthedocs.io/en/latest/customization_tips.html#auto-format-code-on-save
-(add-hook 'elpy-mode-hook (lambda ()
-                            (add-hook 'before-save-hook
-                                      'elpy-black-fix-code nil t)))
+;; (add-hook 'elpy-mode-hook
+;;    (lambda ()
+;;      (add-hook 'before-save-hook
+;;                'elpy-black-fix-code nil t)))
 
 ;; Disable emacs backup files
 (setq make-backup-files nil)
@@ -84,9 +88,9 @@
 (setq python-indent-guess-indent-offset-verbose nil)
 
 ;; show lines over 80 characters
-(require 'whitespace)
-(setq whitespace-style '(face empty tabs lines-tail trailing))
-(global-whitespace-mode t)
+;; (require 'whitespace)
+;; (setq whitespace-style '(face empty tabs trailing))
+;; (global-whitespace-mode t)
 
 ;; ace-window
 (require 'ace-window)
@@ -101,6 +105,21 @@
  ;; :bind (("M-o" . ace-window)
  ;;        ("M-O" . ace-swap-window)))
 
+
+;; (defun custom-highlighter (level responsive display)
+;;   (if (> 1 level)
+;;       nil
+;;     (highlight-indent-guides--highlighter-default level responsive character)
+;;   )
+;; )
+
+;; (setq highlight-indent-guides-highlighter-function 'custom-highlighter)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
+;; (set-face-background 'highlight-indent-guides-odd-face "darkgray")
+;; (set-face-background 'highlight-indent-guides-even-face "dimgray")
+;; (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -108,7 +127,7 @@
  ;; If there is more than one, they won't work right.
  '(elpy-formatter 'black)
  '(package-selected-packages
-   '(logview dockerfile-mode yaml-mode yaml ace-window material-theme magit blacken py-autopep8 flycheck elpy better-defaults)))
+   '(csv-mode yapfify p4 log4j-mode logview dockerfile-mode yaml-mode yaml ace-window material-theme magit blacken py-autopep8 flycheck elpy better-defaults)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
