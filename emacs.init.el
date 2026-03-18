@@ -6,9 +6,11 @@
 ;; Enables basic packaging support
 (require 'package)
 
-;; Adds the Melpa archive to the list of available repositories
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+;; Adds the Melpa and GNU ELPA archives to the list of available repositories
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")))
+
+(setq package-check-signature nil)
 
 ;; Initializes the package infrastructure
 (package-initialize)
@@ -28,13 +30,11 @@
     blacken                         ;; Black formatting on save
     magit                           ;; Git integration
     material-theme                  ;; Theme: material, material-light
-    base16-theme
     ace-window                      ;; Window navigation
     highlight-indent-guides         ;; Highlight indentations
+    vlf                             ;; View Large Files in chunks
     )
   )
-
-(require 'vlf-setup) ;; to open large files
 
 ;; Scans the list in myPackages
 ;; If the package listed is not already installed, install it
@@ -42,6 +42,8 @@
           (unless (package-installed-p package)
             (package-install package)))
       myPackages)
+
+(require 'vlf-setup) ;; to open large files
 
 ;; ===================================
 ;; Basic Customization
