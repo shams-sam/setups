@@ -51,7 +51,7 @@
 
 (setq inhibit-startup-message t)    ;; Hide the startup message
 (load-theme 'material t)            ;; Load material theme
-(global-linum-mode t)               ;; Enable line numbers globally
+(global-display-line-numbers-mode t) ;; Enable line numbers globally
 
 ;; ====================================
 ;; Development Setup
@@ -121,6 +121,32 @@
 ;; (set-face-background 'highlight-indent-guides-odd-face "darkgray")
 ;; (set-face-background 'highlight-indent-guides-even-face "dimgray")
 ;; (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
+
+;; ====================================
+;; Clipboard over SSH (reverse port forward to localhost:2224)
+;; ====================================
+(unless (display-graphic-p)
+  (defun my/copy-to-clipboard (text &rest _)
+    (let ((process-connection-type nil))
+      (if (or (not (getenv "SSH_CONNECTION"))
+              (string= (getenv "SSH_CONNECTION") ""))
+          ;; Local macOS — pbcopy
+          (let ((proc (start-process "pbcopy" nil "pbcopy")))
+            (process-send-string proc text)
+            (process-send-eof proc))
+        ;; Remote — send via reverse-forwarded port
+        (let ((proc (start-process "clipboard" nil "nc" "-N" "localhost" "2224")))
+          (process-send-string proc text)
+          (process-send-eof proc)))))
+
+  (defun my/paste-from-clipboard ()
+    (if (or (not (getenv "SSH_CONNECTION"))
+            (string= (getenv "SSH_CONNECTION") ""))
+        (shell-command-to-string "pbpaste")
+      nil))
+
+  (setq interprogram-cut-function #'my/copy-to-clipboard)
+  (setq interprogram-paste-function #'my/paste-from-clipboard))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
