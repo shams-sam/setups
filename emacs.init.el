@@ -123,7 +123,7 @@
 ;; (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
 
 ;; ====================================
-;; Clipboard over SSH (reverse port forward to localhost:2224)
+;; Clipboard over SSH (reverse port forward to localhost:2225)
 ;; ====================================
 (unless (display-graphic-p)
   (defun my/copy-to-clipboard (text &rest _)
@@ -135,7 +135,7 @@
             (process-send-string proc text)
             (process-send-eof proc))
         ;; Remote — send via reverse-forwarded port
-        (let ((proc (start-process "clipboard" nil "nc" "-N" "localhost" "2224")))
+        (let ((proc (start-process "clipboard" nil "nc" "-N" "localhost" "2225")))
           (process-send-string proc text)
           (process-send-eof proc)))))
 
