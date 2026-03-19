@@ -1,4 +1,4 @@
-;; .emacs.d/init.el 
+;; .emacs.d/init.el
 
 ;; ===================================
 ;; MELPA Package Support
@@ -123,7 +123,7 @@
 ;; (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
 
 ;; ====================================
-;; Clipboard over SSH (reverse port forward to localhost:2225)
+;; Clipboard over SSH (reverse port forward to localhost:2224)
 ;; ====================================
 (unless (display-graphic-p)
   (defun my/copy-to-clipboard (text &rest _)

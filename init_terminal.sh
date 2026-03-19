@@ -45,7 +45,7 @@ fi" >> ~/.profile
 source ~/.profile
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-cp .tmux.conf.maglev ~/.tmux.conf
+cp dotfiles/.tmux.conf ~/.tmux.conf
 
 mkdir ~/.emacs.d
-cp emacs.init.el ~/.emacs.d/init.el
+cp dotfiles/emacs.init.el ~/.emacs.d/init.el
