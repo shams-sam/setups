@@ -32,6 +32,7 @@ REPO_NAMES=(
     ".aerospace.toml"
     ".tmux.conf"
     "emacs.init.el"
+    "emacs.early-init.el"
     ".vimrc"
     ".zshrc"
     "agnoster-light.zsh-theme"
@@ -40,12 +41,14 @@ HOME_PATHS=(
     "$HOME/.aerospace.toml"
     "$HOME/.tmux.conf"
     "$HOME/.emacs.d/init.el"
+    "$HOME/.emacs.d/early-init.el"
     "$HOME/.vimrc"
     "$HOME/.zshrc"
     "$HOME/.oh-my-zsh/themes/agnoster-light.zsh-theme"
 )
 TARGETS=(
     "macos"
+    "all"
     "all"
     "all"
     "linux"
