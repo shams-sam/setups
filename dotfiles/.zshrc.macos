@@ -107,6 +107,7 @@ setopt NO_HUP NO_CHECK_JOBS
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Conda
+export CONDA_CHANGEPS1=false
 if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
     source "$HOME/miniconda3/etc/profile.d/conda.sh"
     conda activate bolt-assistant

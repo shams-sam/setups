@@ -34,6 +34,7 @@ REPO_NAMES=(
     "emacs.init.el"
     ".vimrc"
     ".zshrc"
+    "agnoster-light.zsh-theme"
 )
 HOME_PATHS=(
     "$HOME/.aerospace.toml"
@@ -41,12 +42,14 @@ HOME_PATHS=(
     "$HOME/.emacs.d/init.el"
     "$HOME/.vimrc"
     "$HOME/.zshrc"
+    "$HOME/.oh-my-zsh/themes/agnoster-light.zsh-theme"
 )
 TARGETS=(
     "macos"
     "all"
     "all"
     "linux"
+    "all"
     "all"
 )
 
