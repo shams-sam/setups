@@ -161,8 +161,11 @@ sync_diff() {
             continue
         fi
         if ! diff -q "$repo_path" "$home_path" > /dev/null 2>&1; then
-            echo "=== $(basename "$repo_path") vs $home_path ==="
-            diff --color=auto -u "$repo_path" "$home_path" || true
+            echo "=== $(basename "$repo_path") ==="
+            diff --color=auto -u \
+                --label "repo: dotfiles/$(basename "$repo_path")" \
+                --label "home: $home_path" \
+                "$repo_path" "$home_path" || true
             has_diff=1
         fi
     done
