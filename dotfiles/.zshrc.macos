@@ -106,34 +106,20 @@ setopt NO_HUP NO_CHECK_JOBS
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/m1cro1ce/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/Users/m1cro1ce/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/m1cro1ce/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/Users/m1cro1ce/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-
-source /Users/m1cro1ce/miniconda3/etc/profile.d/conda.sh  
-conda activate py37
+# Conda
+if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+    source "$HOME/miniconda3/etc/profile.d/conda.sh"
+    conda activate bolt-assistant
+fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/m1cro1ce/.lmstudio/bin"
-# End of LM Studio CLI section
-
+export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Added by Antigravity
-export PATH="/Users/m1cro1ce/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # Clipboard listener for Emacs copy over SSH (port 2225)
 if [ -z "$SSH_CONNECTION" ]; then
@@ -142,3 +128,6 @@ if [ -z "$SSH_CONNECTION" ]; then
     nohup ~/.local/bin/clipboard-listener 2225 &>/dev/null &
   fi
 fi
+
+# Machine-specific overrides (not tracked in repo)
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

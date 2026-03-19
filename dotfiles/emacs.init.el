@@ -96,7 +96,6 @@
 
 ;; ace-window
 (require 'ace-window)
-  :ensure t
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
       aw-char-position 'top-left
       aw-dispatch-always 't
