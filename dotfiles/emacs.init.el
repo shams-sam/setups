@@ -123,7 +123,7 @@
 ;; (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
 
 ;; ====================================
-;; Clipboard over SSH (reverse port forward to localhost:2224)
+;; Clipboard over SSH (reverse port forward to localhost:2225)
 ;; ====================================
 (unless (display-graphic-p)
   (defun my/copy-to-clipboard (text &rest _)
