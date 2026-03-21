@@ -31,6 +31,8 @@ esac
 REPO_NAMES=(
     ".aerospace.toml"
     ".tmux.conf"
+    "tmux.claude-status.sh"
+    "tmux.claude-window-status.sh"
     "emacs.init.el"
     "emacs.early-init.el"
     ".vimrc"
@@ -40,6 +42,8 @@ REPO_NAMES=(
 HOME_PATHS=(
     "$HOME/.aerospace.toml"
     "$HOME/.tmux.conf"
+    "$HOME/.tmux/claude-status.sh"
+    "$HOME/.tmux/claude-window-status.sh"
     "$HOME/.emacs.d/init.el"
     "$HOME/.emacs.d/early-init.el"
     "$HOME/.vimrc"
@@ -48,6 +52,8 @@ HOME_PATHS=(
 )
 TARGETS=(
     "macos"
+    "all"
+    "all"
     "all"
     "all"
     "all"
