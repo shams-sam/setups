@@ -38,5 +38,10 @@ if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
     conda activate bolt-assistant
 fi
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # Machine-specific overrides (not tracked in repo)
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
