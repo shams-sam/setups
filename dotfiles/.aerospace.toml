@@ -221,6 +221,19 @@ on-mode-changed = []
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
 
+# Float-only apps (Settings, AppleConnect, Apple Directory)
+[[on-window-detected]]
+if.app-name-regex-substring = 'System Settings|AppleConnect|Apple Directory|Keychain Access|Activity Monitor|Passwords'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.quip.Desktop'
+run = ['move-node-to-workspace 4', 'fullscreen on']
+
+[[on-window-detected]]
+if.app-id = 'Cisco-Systems.Spark'
+run = ['move-node-to-workspace 7', 'layout floating']
+
 [workspace-to-monitor-force-assignment]
 # Laptop Screen (Peripheral/Reference) - The "Left"
 1 = 2
@@ -239,5 +252,6 @@ W = 1
 
 # Side External Monitor
 3 = [3, 1]
+7 = [3, 2]
 D = [3, 2]
 E = [3, 1]
