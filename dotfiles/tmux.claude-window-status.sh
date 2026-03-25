@@ -37,7 +37,7 @@ for WIN in $(tmux list-windows -a -F '#{window_id}' 2>/dev/null); do
         fi
 
         # Claude found — hash pane content for idle detection
-        CURRENT_HASH=$(tmux capture-pane -t "$PANE_ID" -p -S -5 2>/dev/null | md5sum | cut -d' ' -f1)
+        CURRENT_HASH=$(tmux capture-pane -t "$PANE_ID" -p -S -5 2>/dev/null | md5 -q)
         PREV_HASH=""
         [ -f "$HASH_FILE" ] && PREV_HASH=$(cat "$HASH_FILE")
         echo "$CURRENT_HASH" > "$HASH_FILE"

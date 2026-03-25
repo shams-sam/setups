@@ -30,6 +30,8 @@ esac
 # Mapping: parallel arrays — repo name, home path, target OS
 REPO_NAMES=(
     ".aerospace.toml"
+    "aerospace.cycle-windows.sh"
+    "aerospace.show-windows.sh"
     ".tmux.conf"
     "tmux.claude-status.sh"
     "tmux.claude-window-status.sh"
@@ -41,6 +43,8 @@ REPO_NAMES=(
 )
 HOME_PATHS=(
     "$HOME/.aerospace.toml"
+    "$HOME/.config/aerospace/cycle-windows.sh"
+    "$HOME/.config/aerospace/show-windows.sh"
     "$HOME/.tmux.conf"
     "$HOME/.tmux/claude-status.sh"
     "$HOME/.tmux/claude-window-status.sh"
@@ -51,6 +55,8 @@ HOME_PATHS=(
     "$HOME/.oh-my-zsh/themes/agnoster-light.zsh-theme"
 )
 TARGETS=(
+    "macos"
+    "macos"
     "macos"
     "all"
     "all"

@@ -194,6 +194,11 @@ on-mode-changed = []
     alt-shift-y = 'move-node-to-workspace Y'
     alt-shift-z = 'move-node-to-workspace Z'
 
+    # Cycle through windows on focused workspace
+    alt-tab = 'exec-and-forget ~/.config/aerospace/cycle-windows.sh'
+    # Show window summary for focused workspace
+    alt-shift-slash = 'exec-and-forget ~/.config/aerospace/show-windows.sh'
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     cmd-alt-tab = 'workspace-back-and-forth'
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -223,7 +228,7 @@ on-mode-changed = []
 
 # Float-only apps (Settings, AppleConnect, Apple Directory)
 [[on-window-detected]]
-if.app-name-regex-substring = 'System Settings|AppleConnect|Apple Directory|Keychain Access|Activity Monitor|Passwords'
+if.app-name-regex-substring = 'System Settings|AppleConnect|Apple Directory|Keychain Access|Activity Monitor|Passwords|Finder'
 run = 'layout floating'
 
 [[on-window-detected]]
