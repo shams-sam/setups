@@ -228,7 +228,7 @@ on-mode-changed = []
 
 # Float-only apps (Settings, AppleConnect, Apple Directory)
 [[on-window-detected]]
-if.app-name-regex-substring = 'System Settings|AppleConnect|Apple Directory|Keychain Access|Activity Monitor|Passwords|Finder'
+if.app-name-regex-substring = 'System Settings|AppleConnect|Apple Directory|Keychain Access|Activity Monitor|Passwords|Finder|Numbers'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -237,7 +237,7 @@ run = ['move-node-to-workspace 4', 'fullscreen on']
 
 [[on-window-detected]]
 if.app-id = 'Cisco-Systems.Spark'
-run = ['move-node-to-workspace 7', 'layout floating']
+run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
 # Laptop Screen (Peripheral/Reference) - The "Left"

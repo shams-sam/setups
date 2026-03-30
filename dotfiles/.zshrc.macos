@@ -124,8 +124,7 @@ export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # Clipboard listener for Emacs copy over SSH (port 2225)
 if [ -z "$SSH_CONNECTION" ]; then
-  CLIPD_PID="/tmp/clipboard-listener.pid"
-  if ! { [ -f "$CLIPD_PID" ] && kill -0 "$(cat "$CLIPD_PID")" 2>/dev/null; }; then
+  if ! lsof -iTCP:2225 -sTCP:LISTEN -t &>/dev/null; then
     nohup ~/.local/bin/clipboard-listener 2225 &>/dev/null &
   fi
 fi
