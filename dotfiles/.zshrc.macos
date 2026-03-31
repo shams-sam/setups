@@ -106,6 +106,9 @@ setopt NO_HUP NO_CHECK_JOBS
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Silence prompt_virtualenv warning (conda doesn't set VIRTUAL_ENV)
+export VIRTUAL_ENV="${VIRTUAL_ENV:-}"
+
 # Conda
 export CONDA_CHANGEPS1=false
 if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
