@@ -45,7 +45,8 @@ for WIN in $(tmux list-windows -a -F '#{window_id}' 2>/dev/null); do
         if [ "$CURRENT_HASH" = "$PREV_HASH" ]; then
             # Hash stable — increment counter, only idle after 2 consecutive
             COUNT=1
-            [ -f "$COUNT_FILE" ] && COUNT=$(cat "$COUNT_FILE")
+            [ -f "$COUNT_FILE" ] && COUNT=$(head -1 "$COUNT_FILE")
+            [[ "$COUNT" =~ ^[0-9]+$ ]] || COUNT=1
             COUNT=$((COUNT + 1))
             echo "$COUNT" > "$COUNT_FILE"
             if [ "$COUNT" -ge 2 ]; then
