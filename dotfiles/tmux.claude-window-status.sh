@@ -8,6 +8,13 @@
 STATE_DIR="/tmp/tmux-claude-status"
 mkdir -p "$STATE_DIR"
 
+# Cross-platform md5: macOS uses md5 -q, Linux uses md5sum
+if command -v md5 &>/dev/null; then
+    md5cmd() { md5 -q; }
+else
+    md5cmd() { md5sum | cut -d' ' -f1; }
+fi
+
 # Get full process table once
 PROCS=$(ps -eo pid,ppid,command 2>/dev/null)
 
@@ -36,13 +43,29 @@ for WIN in $(tmux list-windows -a -F '#{window_id}' 2>/dev/null); do
             continue
         fi
 
-        # Claude found — hash pane content for idle detection
-        CURRENT_HASH=$(tmux capture-pane -t "$PANE_ID" -p -S -5 2>/dev/null | md5 -q)
+        # Claude found — capture pane content
+        PANE_CONTENT=$(tmux capture-pane -t "$PANE_ID" -p -S -5 2>/dev/null)
+
+        # Check if Claude is actively working (tool/MCP call in progress)
+        # "esc to interrupt" appears at the bottom when Claude is running,
+        # "? for shortcuts" appears when waiting for user input.
+        ACTIVELY_WORKING=0
+        if echo "$PANE_CONTENT" | grep -q "esc to interrupt"; then
+            ACTIVELY_WORKING=1
+        fi
+
+        # Hash pane content for change detection
+        CURRENT_HASH=$(echo "$PANE_CONTENT" | md5cmd)
         PREV_HASH=""
         [ -f "$HASH_FILE" ] && PREV_HASH=$(cat "$HASH_FILE")
         echo "$CURRENT_HASH" > "$HASH_FILE"
 
-        if [ "$CURRENT_HASH" = "$PREV_HASH" ]; then
+        if [ "$ACTIVELY_WORKING" -eq 1 ]; then
+            # Claude is running a tool/MCP — always active
+            echo "1" > "$COUNT_FILE"
+            echo "active" > "$STATE_FILE"
+            ICONS="${ICONS}⚡"
+        elif [ "$CURRENT_HASH" = "$PREV_HASH" ]; then
             # Hash stable — increment counter, only idle after 2 consecutive
             COUNT=1
             [ -f "$COUNT_FILE" ] && COUNT=$(head -1 "$COUNT_FILE")
