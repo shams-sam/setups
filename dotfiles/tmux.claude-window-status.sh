@@ -39,7 +39,7 @@ for WIN in $(tmux list-windows -a -F '#{window_id}' 2>/dev/null); do
         fi
 
         if [ "$HAS_CLAUDE" -eq 0 ]; then
-            rm -f "$HASH_FILE" "$COUNT_FILE" "$STATE_FILE" 2>/dev/null
+            rm -f "$HASH_FILE" "$COUNT_FILE" "$STATE_FILE" "$STATE_DIR/${PANE_KEY}.port" 2>/dev/null
             continue
         fi
 
